@@ -1,0 +1,146 @@
+<aside class="col-lg-3 col-md-4 border-end pb-5 mt-n5">
+  <link rel="stylesheet" href="/assets/css/badges.css" />
+  <div class="position-sticky top-0">
+    <div class="text-center pt-5">
+      <div class="d-table position-relative mx-auto mt-2 mt-lg-4 pt-5 mb-3">
+        <img
+          src="<%= member.avatar ? member.avatarURL({ format: 'png', size: 512 }) : 'https://cdn.discordapp.com/embed/avatars/0.png' %>"
+          class="d-block rounded-circle"
+          width="120"
+          alt="<%= member.username %>" />
+      </div>
+      <h2 class="h5 mb-1"><%= member.username %></h2>
+      <p class="mb-3"><%= member.id %></p>
+
+      <% let cache =
+      bot.guilds.cache.get(config.server.id).members.cache.get(member.id) %> <%
+      if (cache) { %> <% let administrator =
+      cache.roles.cache.get(config.server.roles.administrator); %> <% let
+      moderator = cache.roles.cache.get(config.server.roles.moderator); %> <%
+      let supporter = cache.roles.cache.get(config.server.roles.supporter); %>
+      <% let botReviewer =
+      cache.roles.cache.get(config.server.roles.botReviewer); %> <% let
+      botDeveloper = cache.roles.cache.get(config.server.roles.botDeveloper); %>
+      <% if (administrator) { %>
+      <span
+        class="badge bg-faded-danger text-danger mb-3"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Administrator"
+        ><i class="bx bx-shield-quarter me-2"></i>Administrator</span
+      >
+      <% } %> <% if (moderator) { %>
+      <span
+        class="badge moderator-bg mb-3"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Moderator"
+        ><i class="bx bx-shield-quarter me-2"></i>Moderator</span
+      >
+      <% } %> <% if (supporter) { %>
+      <span
+        class="badge supporter-bg mb-3"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Supporter"
+        ><i class="bx bx-donate-heart me-2"></i>Supporter</span
+      >
+      <% } %> <% if (botReviewer) { %>
+      <span
+        class="badge bot-reviewer-bg mb-3"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Bot Reviewer"
+        ><i class="bx bx-id-card me-2"></i>Bot Reviewer</span
+      >
+      <% } %> <% if (botDeveloper) { %>
+      <span
+        class="badge bg-faded-info text-info mb-3"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Bot Developer"
+        ><i class="bx bx-code-alt me-2"></i>Bot Developer</span
+      >
+      <% } %> <% } %>
+
+      <a
+        href="https://discord.com/users/<%= member.id %>"
+        target="_blank"
+        class="btn btn-lg btn-outline-secondary mb-3"
+        style="width: -webkit-fill-available;">
+        <i class="bx bxl-discord-alt me-2 lead"></i>Discord
+      </a>
+      <a
+        href="<%= config.website.support %>"
+        target="_blank"
+        class="btn btn-lg btn-outline-secondary mb-3"
+        style="width: -webkit-fill-available;">
+        <i class="bx bxl-discord-alt me-2 lead"></i>Support
+      </a>
+      <button
+        type="button"
+        class="btn btn-secondary w-100 d-md-none mt-n2 mb-3"
+        data-bs-toggle="collapse"
+        data-bs-target="#account-menu">
+        <i class="bx bxs-user-detail fs-xl me-2"></i>
+        Account menu
+        <i class="bx bx-chevron-down fs-lg ms-1"></i>
+      </button>
+      <div
+        id="account-menu"
+        class="list-group list-group-flush collapse d-md-block">
+        <% if (req.url == `/profile/${member.id}`) { %>
+        <a
+          href="/profile/<%= member.id %>"
+          class="list-group-item list-group-item-action d-flex align-items-center active">
+          <i class="bx bx-cog fs-xl opacity-60 me-2"></i>
+          Account Details
+        </a>
+        <% } else { %>
+        <a
+          href="/profile/<%= member.id %>"
+          class="list-group-item list-group-item-action d-flex align-items-center">
+          <i class="bx bx-cog fs-xl opacity-60 me-2"></i>
+          Account Details
+        </a>
+        <% } %> <% if (user && req.user.id == member.id) { %> <% if (req.url ==
+        `/profile/${member.id}/comments`) { %>
+        <a
+          href="/profile/<%= member.id %>/comments"
+          class="list-group-item list-group-item-action d-flex align-items-center active">
+          <i class="bx bx-comment fs-xl opacity-60 me-2"></i>
+          Comment Logs
+        </a>
+        <% } else { %>
+        <a
+          href="/profile/<%= member.id %>/comments"
+          class="list-group-item list-group-item-action d-flex align-items-center">
+          <i class="bx bx-comment fs-xl opacity-60 me-2"></i>
+          Comment Logs
+        </a>
+        <% } %> <% if (req.url == `/manage/profile`) { %>
+        <a
+          href="/manage/profile"
+          class="list-group-item list-group-item-action d-flex align-items-center active">
+          <i class="bx bx-lock fs-xl opacity-60 me-2"></i>
+          Manage Profile
+        </a>
+        <% } else { %>
+        <a
+          href="/manage/profile"
+          class="list-group-item list-group-item-action d-flex align-items-center">
+          <i class="bx bx-lock fs-xl opacity-60 me-2"></i>
+          Manage Profile
+        </a>
+        <% } %>
+        <a
+          href="/logout"
+          class="list-group-item list-group-item-action d-flex align-items-center">
+          <i class="bx bx-log-out fs-xl opacity-60 me-2"></i>
+          Sign Out
+        </a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</aside>

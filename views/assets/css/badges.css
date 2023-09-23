@@ -1,0 +1,21 @@
+/* How to name the classes: */
+/* You wanna name the clases - .[BADGE-Name]-bg {  } */
+/* Long names can be: [name[1]]-[name[2]] {} */
+
+.supporter-bg {
+  background-color: rgb(255, 107, 246, 0.12);
+  /* rgb(Red-color, Green-color, Blue-color, .12) */
+  /* .12 is for how visible it is and standard it is .12 */
+  color: #ff6bf6 !important;
+  /* Color can be hex code but do note: If you do not add "!important" it will not overide the default "#fff" color. */
+}
+
+.moderator-bg {
+  background-color: rgb(24, 179, 70, 0.12);
+  color: #18b346 !important;
+}
+
+.bot-reviewer-bg {
+  background-color: rgb(22, 217, 226, 0.12);
+  color: #16d9e2 !important;
+}
