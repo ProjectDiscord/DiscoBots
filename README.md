@@ -47,8 +47,8 @@ Thank you for your interest in DiscoBots, and we hope that this project's legacy
 ## Contact
 If you have any questions or need further information, you can reach out to us on Discord:
 
-- **GitHub:** [notaestheticallyducko](https://github.com/notaestheticallyducko)
-- **Discord:** [@notaestheticallyducko](https://discord.com/users/711712752246325343)
+- **GitHub:** [duckodas](https://github.com/duckodas)
+- **Discord:** [@duckodas](https://discord.com/users/711712752246325343)
 
 ___
 
